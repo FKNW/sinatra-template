@@ -4,14 +4,16 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
     %title
       != yield_content :title
-    %link{:rel => 'stylesheet', :href => "#{app_root}/assets/main.css", :type => 'text/css'}
-    %script{:type => 'text/javascript', :src => "#{app_root}/assets/jquery.js"}
+    %link{:rel => 'stylesheet', :href => stylesheet_path('main'), :type => 'text/css'}
+    %script{:type => 'text/javascript', :src => javascript_path('jquery')}
     != yield_content :head
   %body
     %div#content
       %div#header
         %h1
           != yield_content :title
+          %br
+          %img{:src => image_path('title.png')}
       %div#main
         != yield
       %hr

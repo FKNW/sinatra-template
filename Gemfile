@@ -8,9 +8,12 @@ gem 'sinatra-contrib'
 gem 'json'
 
 gem 'sprockets'
+gem 'sprockets-helpers'
+gem 'yui-compressor', require: 'yui/compressor'
+gem 'sprockets-sass'
+
 gem 'haml'
 gem 'sass'
 gem 'compass'
-gem 'sprockets-sass'
 gem 'coffee-script'
 gem 'coffee-filter'

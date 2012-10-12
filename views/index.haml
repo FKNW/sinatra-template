@@ -1,11 +1,11 @@
 - content_for :title do
-  %img{:src => "#{app_root}/assets/title.png", :alt => @title}
+  = @title
 
 - content_for :head do
   :coffeescript
     @app_root = "#{app_root}"
     @omikuji_api = app_root + '/omikuji.json'
-  %script{:type => 'text/javascript', :src => "#{app_root}/assets/main.js"}
+  %script{:type => 'text/javascript', :src => javascript_path('main')}
 
 %div
   %input{:id => 'start_btn', :type => 'button', :value => 'start'}
