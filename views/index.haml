@@ -2,10 +2,10 @@
   = @title
 
 - content_for :head do
-  :javascript
-    var app_root = "#{app_root}";
-    var omikuji_api = app_root+'/omikuji.json';
-  %script{:type => 'text/javascript', :src => "#{app_root}/js/main.js"}
+  :coffeescript
+    @app_root = "#{app_root}"
+    @omikuji_api = app_root + '/omikuji.json'
+  %script{:type => 'text/javascript', :src => "#{app_root}/assets/main.js"}
 
 %div
   %input{:id => 'start_btn', :type => 'button', :value => 'start'}

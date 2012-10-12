@@ -1,17 +1,23 @@
 require 'rubygems'
-require 'bundler/setup'
-require 'rack'
-require 'sinatra'
+Bundler.setup
+Bundler.require
+require 'yaml'
 $stdout.sync = true if development?
 require 'sinatra/reloader' if development?
-require 'sinatra/content_for'
-require 'yaml'
-require 'json'
-require 'haml'
-require 'sass'
+
 require File.dirname(__FILE__)+'/bootstrap'
 Bootstrap.init :helpers, :controllers
 
 set :haml, :escape_html => true
 
-run Sinatra::Application
+
+map '/assets' do
+  environment = Sprockets::Environment.new
+  environment.append_path 'assets/javascripts'
+  environment.append_path 'assets/stylesheets'
+  run environment
+end
+
+map '/' do
+  run Sinatra::Application
+end
