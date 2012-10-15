@@ -6,6 +6,7 @@ vendor
 .sass-cache
 .bundle
 config.yml
+*.db
 
 # for Mac users
 .DS_Store
