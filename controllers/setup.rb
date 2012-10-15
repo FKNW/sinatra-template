@@ -1,4 +1,3 @@
-
 class App < Sinatra::Base
   set :public_folder, 'public'
   set :views, 'views'
@@ -23,20 +22,9 @@ class App < Sinatra::Base
       sprockets.css_compressor = YUI::CssCompressor.new
     end
   end
-
+  
   before '/*.json' do
     content_type 'application/json'
   end
 
-  get '/' do
-    @title = Conf['title']
-    haml :index
-  end
-
-  get '/omikuji.json' do
-    @mes = {
-      :result => Conf['omikuji'].sample,
-      :time => Time.now.to_s
-    }.to_json
-  end
 end

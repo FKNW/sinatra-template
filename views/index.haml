@@ -8,7 +8,10 @@
   %script{:type => 'text/javascript', :src => javascript_path('main')}
 
 %div
+  %input{:id => 'name_text', :type => 'text', :value => 'Taro Yamada'}
   %input{:id => 'start_btn', :type => 'button', :value => 'start'}
 %div
   %h2 result
   %ul#results
+    - @logs.each do |log|
+      %li= "#{log.lucky} - #{log.created_at.to_s}"

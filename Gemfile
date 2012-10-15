@@ -17,3 +17,6 @@ gem 'sass'
 gem 'compass'
 gem 'coffee-script'
 gem 'coffee-filter'
+
+gem 'sqlite3'
+gem 'sequel'

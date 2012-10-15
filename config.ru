@@ -6,7 +6,7 @@ $stdout.sync = true if development?
 require 'sinatra/reloader' if development?
 
 require File.dirname(__FILE__)+'/bootstrap'
-Bootstrap.init :helpers, :controllers
+Bootstrap.init :models, :helpers, :controllers
 
 set :haml, :escape_html => true
 

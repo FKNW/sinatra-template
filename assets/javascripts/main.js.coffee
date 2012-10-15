@@ -9,7 +9,8 @@ $ ->
   ($ 'input#start_btn').click omikuji_start
 
 omikuji_start = () ->
-  $.getJSON omikuji_api, (res) ->
+  name = ($ 'input#name_text').val()
+  $.getJSON "#{omikuji_api}?name=#{name}", (res) ->
     console.log res
     result = res.result.htmlEscape()
     time = res.time.htmlEscape()
