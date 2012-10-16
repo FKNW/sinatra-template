@@ -1,6 +1,7 @@
 class App < Sinatra::Base
   set :public_folder, 'public'
   set :views, 'views'
+  set :root_url, 'http://localhost'
 
   helpers Sinatra::ContentFor
   helpers Sprockets::Helpers

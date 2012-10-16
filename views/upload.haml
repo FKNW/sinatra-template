@@ -1,0 +1,12 @@
+- content_for :title do
+  = "アップロード"
+
+%div
+  %form{:method => 'post', :enctype => 'multipart/form-data', :action => ''}
+    %input{:type => 'file', :name => 'myfile'}
+    %input{:type => 'submit', :value => 'Upload!'}
+/ %div
+/   %h2 result
+/   %ul#results
+/     - @logs.each do |log|
+/       %li= "#{log.lucky} - #{log.created_at.to_s}"

@@ -33,8 +33,23 @@ class User < Sequel::Model
   one_to_many :logs
 end
 
+class UploadFile < Sequel::Model
+  plugin :timestamps
+
+  set_schema do
+    primary_key :id
+    String :filename
+    timestamps :created_at
+  end
+  
+  def self.fetch(limit, page)
+    return self.order(Sequel.desc(:created_at)).limit(limit, limit * page)
+  end
+end
+
 Log.create_table if not Log.table_exists?
 User.create_table if not User.table_exists?
+UploadFile.create_table if not UploadFile.table_exists?
 
 # Add Initial Data
 if Log.all.count == 0 and User.all.count == 0

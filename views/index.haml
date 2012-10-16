@@ -15,3 +15,12 @@
   %ul#results
     - @logs.each do |log|
       %li= "#{log.lucky} - #{log.created_at.to_s}"
+  %h2 files
+  %p
+    %a{:href => "#{app_root}/upload"}
+      upload
+  %ul#files
+    - @files.each do |file|
+      %li
+        %a{:href => full_url("/files/#{file.filename}")}
+          = file.filename

@@ -3,6 +3,7 @@ class App < Sinatra::Base
   get '/' do
     @title = Conf['title']
     @logs = Log.fetch(10, 0)
+    @files = UploadFile.fetch(10, 0)
     haml :index
   end
 
@@ -20,5 +21,27 @@ class App < Sinatra::Base
       :time => log.created_at,
       :name => name
     }.to_json
+  end
+
+  get '/upload' do
+    content_type 'text/html'
+    haml :upload
+  end
+
+  post '/upload' do
+    if params[:myfile] then
+      new_filename = DateTime.now.strftime('%s') + File.extname(params[:myfile][:filename])
+      Dir::mkdir('./public/files/') if not File.exists?('./public/files/')
+      save_file = './public/files/' + new_filename
+      File.open(save_file, 'wb') { |f| f.write(params[:myfile][:tempfile].read) }
+
+      upload_file = UploadFile.create(:filename => new_filename)
+
+      content_type 'text/plain'
+      'upload completed!'
+    else
+      content_type 'text/plain'
+      'POST with "file" arg.'
+    end
   end
 end

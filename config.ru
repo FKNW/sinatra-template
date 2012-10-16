@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'uri'
 Bundler.setup
 Bundler.require
 require 'yaml'
